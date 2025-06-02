@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import JsonSection from './JsonSection';
@@ -15,11 +14,11 @@ const DynamicJsonRenderer: React.FC<DynamicJsonRendererProps> = ({ data, title =
     }
 
     if (typeof value === 'boolean') {
-      return <span className={`font-medium ${value ? 'text-green-600' : 'text-red-600'}`}>{String(value)}</span>;
+      return <span className={`font-medium ${value ? 'text-emerald-600' : 'text-rose-600'}`}>{String(value)}</span>;
     }
 
     if (typeof value === 'number') {
-      return <span className="text-blue-600 font-medium">{value}</span>;
+      return <span className="text-indigo-600 font-medium">{value}</span>;
     }
 
     if (typeof value === 'string') {
@@ -30,7 +29,7 @@ const DynamicJsonRenderer: React.FC<DynamicJsonRendererProps> = ({ data, title =
             href={value} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-800 underline break-all"
+            className="text-indigo-600 hover:text-indigo-800 hover:underline break-all transition-colors"
           >
             {value}
           </a>
@@ -47,11 +46,11 @@ const DynamicJsonRenderer: React.FC<DynamicJsonRendererProps> = ({ data, title =
       // Check if all items are strings (for simple lists)
       if (value.every(item => typeof item === 'string')) {
         return (
-          <ul className="space-y-1 ml-4">
+          <ul className="space-y-2 ml-4">
             {value.map((item, index) => (
-              <li key={index} className="flex items-start gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                <span className="text-gray-600 text-sm leading-relaxed">{item}</span>
+              <li key={index} className="flex items-start gap-2 group">
+                <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0 group-hover:bg-indigo-600 transition-colors"></span>
+                <span className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-800 transition-colors">{item}</span>
               </li>
             ))}
           </ul>
@@ -60,9 +59,9 @@ const DynamicJsonRenderer: React.FC<DynamicJsonRendererProps> = ({ data, title =
 
       // For complex arrays
       return (
-        <div className="space-y-3">
+        <div className="space-y-4">
           {value.map((item, index) => (
-            <div key={index} className="border-l-2 border-gray-200 pl-4">
+            <div key={index} className="border-l-2 border-gray-200 pl-4 hover:border-indigo-200 transition-colors">
               <h4 className="font-medium text-gray-600 mb-2">Item {index + 1}</h4>
               {renderValue(item, undefined, level + 1)}
             </div>
@@ -91,7 +90,7 @@ const DynamicJsonRenderer: React.FC<DynamicJsonRendererProps> = ({ data, title =
             }
 
             return (
-              <div key={objKey} className="space-y-2">
+              <div key={objKey} className="space-y-2 hover:bg-gray-50 p-2 rounded-lg transition-colors">
                 <h4 className="font-medium text-gray-700">{formattedKey}</h4>
                 <div className="ml-4">
                   {renderValue(objValue, objKey, level + 1)}
@@ -107,10 +106,10 @@ const DynamicJsonRenderer: React.FC<DynamicJsonRendererProps> = ({ data, title =
   };
 
   return (
-    <Card className="max-w-4xl mx-auto p-8 bg-white shadow-lg">
+    <Card className="max-w-4xl mx-auto p-8 bg-white shadow-lg hover:shadow-xl transition-shadow">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-2">{title}</h1>
-        <div className="h-1 w-20 bg-blue-600 rounded"></div>
+        <div className="h-1 w-20 bg-indigo-600 rounded"></div>
       </div>
       
       <div className="space-y-6">
