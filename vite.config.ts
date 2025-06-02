@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? "/json-view-for-notion/" : "/",
+  base: "/",
   server: {
     port: 8080,
     open: true,
