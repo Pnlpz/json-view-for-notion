@@ -15,7 +15,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    <base href="/json-view-for-notion/" />
+    <script>
+      // Set base href based on environment
+      const base = window.location.hostname === 'localhost' ? '/' : '/json-view-for-notion/';
+      document.write(`<base href="${base}" />`);
+    </script>
   </head>
 
   <body>

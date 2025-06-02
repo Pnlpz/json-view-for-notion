@@ -4,10 +4,10 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/json-view-for-notion/",
+  base: mode === 'production' ? "/json-view-for-notion/" : "/",
   server: {
-    host: "::",
     port: 8080,
+    open: true,
   },
   plugins: [
     react(),
@@ -26,6 +26,6 @@ export default defineConfig(({ mode }) => ({
         manualChunks: undefined,
       },
     },
-    emptyOutDir: true, // ensures clean build
+    emptyOutDir: true,
   },
 }));
